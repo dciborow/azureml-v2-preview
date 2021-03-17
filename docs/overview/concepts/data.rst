@@ -23,6 +23,7 @@ Create a Data asset from cloud data
 This example assumes you already have some data in cloud storage.
 
 dataset_from_storage.yml:
+
 .. code-block:: yaml
 
   name: test_directory_dataset
@@ -46,13 +47,23 @@ Attach an external datastore
 ----------------------------
 
 The following command will attach an external storage account to your workspace.
+data_store.yml
+
+.. code-block:: yaml
+
+  name: mydatastore
+  account_name: blobaccountname
+  container_name: mystorecontainer
+  hierarchical_namespace_enabled: false
+
 .. code-block:: console
 
-  az ml datastore attach-blob -n anotherstorageaccount SAS_TOKEN
+  az ml datastore create -f data_store.yml
 
 Next, we can create a Data asset which references this other storage account.
 
 dataset_from_another_storage.yml:
+
 .. code-block:: yaml
 
   name: datafromsomewherelse
