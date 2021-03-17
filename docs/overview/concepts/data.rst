@@ -55,6 +55,23 @@ data_store.yml
   account_name: blobaccountname
   container_name: mystorecontainer
   hierarchical_namespace_enabled: false
+  credential:
+    access_key: <insert account key here>
+
+Or with a Service Principal.
+
+.. code-block:: yaml
+
+  name: mydatastore
+  account_name: blobaccountname
+  container_name: mystorecontainer
+  hierarchical_namespace_enabled: false
+  credential:
+    tenant_id: 
+    client_id: 
+    client_secret:
+
+
 
 .. code-block:: console
 
