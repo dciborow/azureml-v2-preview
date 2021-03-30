@@ -47,6 +47,7 @@ Attach an external datastore
 ----------------------------
 
 The following command will attach an external storage account to your workspace.
+
 data_store.yml
 
 .. code-block:: yaml
@@ -87,6 +88,7 @@ dataset_from_another_storage.yml:
   version: 1
   datastore: azure:anotherstorageaccount
   directory: examples/cocodata
+
 
 .. code-block:: console
 

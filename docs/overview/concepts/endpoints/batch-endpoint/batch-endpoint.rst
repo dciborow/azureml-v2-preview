@@ -72,8 +72,7 @@ Batch scoring job usually takes time to process the entire input. You can monito
 You can also get the job link following below:
 
 1. From your workspace page, click `Studio web URL` to launch studio. 
-2. Open `Endpoints` page, click `Pipeline endpoints`.
-3. Click endpoint name, and you will see a list of jobs.
+2. Open `Experiments` page, and you will see a list of jobs.
 
 If you prefer using CLI, below are the commands.
 
@@ -111,7 +110,7 @@ One batch endpoint can have multiple deployments hosting different models. Use b
 
 .. code-block:: bash
   
-  az ml endpoint update --name mybatchendpoint --type batch --deployment-file examples/endpoints/batch/add-deployment.yml
+  az ml endpoint update --name mybatchendpoint --type batch --deployment autolog_deployment --deployment-file examples/endpoints/batch/add-deployment.yml
 
 This sample uses an MLFlow model, the deployment yaml is much simpler, as environment and scoring script can be auto generated.
 
@@ -163,7 +162,7 @@ Please provide the full ARMId. Replace with your own information following the s
   {
       "properties": {
           "dataset": {
-              "dataInputType": 1,
+              "dataInputType": "DatasetId",
               "datasetId": "/subscriptions/{{subscription}}/resourceGroups/{{resourcegroup}}/providers/Microsoft.MachineLearningServices/workspaces/{{workspaceName}}/data/{{datasetName}}/versions/1"
               }
           }        
@@ -177,11 +176,8 @@ Option 2: Input is cloud path.
   {
       "properties": {
           "dataset": {
-              "dataInputType": "DataUrl",
-              "AssetPath": {
-                  "Path": "https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv",
-                  "IsDirectory": false
-              }
+            "dataInputType": "DataUrl",
+            "Path": "https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv"                  
           }        
       }
   }
